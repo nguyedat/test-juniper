@@ -1,11 +1,20 @@
 - name: Examples of show version juniper
   hosts: GW_ILL
+  roles:
+    - Juniper.junos 
   connection: local
+  gather_facts: no
   tasks:
-  - name: show version
-    junos_command:
-      commands: show version
-    register: response
-  - name: Print.
-    debug:
-      var: response
+  - name: Checking NETCONF connectivity
+      wait_for: 
+        host: "{{ inventory_hostname }}"
+        port: 830 
+        timeout: 5
+
+    - name: Retrieving information from devices running Junos OS
+      juniper_junos_facts:
+        host: "{{ inventory_hostname }}"
+
+    - name: Print version
+      debug:
+        var: junos.version
