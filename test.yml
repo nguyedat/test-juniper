@@ -1,5 +1,5 @@
 - name: Examples of show version juniper
-  hosts: HCM001ILL02
+  hosts: HNI001ILL01
   connection: local
   gather_facts: no
   tasks:
