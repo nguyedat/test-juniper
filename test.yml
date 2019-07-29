@@ -1,7 +1,5 @@
 - name: Examples of show version juniper
   hosts: GW_ILL
-  roles:
-    - Juniper.junos 
   connection: local
   gather_facts: no
   tasks:
