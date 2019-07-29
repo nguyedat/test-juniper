@@ -8,11 +8,9 @@
         host: "{{ inventory_hostname }}"
         port: 830 
         timeout: 5
-
     - name: Retrieving information from devices running Junos OS
       juniper_junos_facts:
         host: "{{ inventory_hostname }}"
-
     - name: Print version
       debug:
         var: junos.version
