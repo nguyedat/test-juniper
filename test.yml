@@ -11,6 +11,7 @@
     - name: Retrieving information from devices running Junos OS
       juniper_junos_facts:
         host: "{{ inventory_hostname }}"
+        savedir: "{{ playbook_dir }}"
     - name: Print version
       debug:
         var: junos.version
