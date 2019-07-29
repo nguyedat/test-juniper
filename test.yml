@@ -1,0 +1,11 @@
+- name: Examples of show version juniper
+  hosts: GW_ILL
+  connection: local
+  tasks:
+  - name: show version
+    junos_command:
+      commands: show version
+    register: response
+  - name: Print.
+    debug:
+      var: response
