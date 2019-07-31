@@ -1,5 +1,5 @@
 - name: Examples of show version juniper
-  hosts: HNI001ILL01
+  hosts: HNI001PER01
   connection: local
   gather_facts: no
   tasks:
@@ -22,8 +22,4 @@
       junos_command:
         commands:
           - show version
-          - show interfaces ge-0/0/0
-    - name: run commands and specify the output format
-      junos_command:
-        commands: show version
-        display: json
+          - show interfaces descriptions
