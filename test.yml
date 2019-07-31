@@ -1,7 +1,5 @@
 - name: Examples of show version juniper
   hosts: HNI001PER01
-  roles:
-    - Juniper.junos
   connection: local
   gather_facts: no
   tasks:
@@ -10,6 +8,18 @@
         host: "{{ inventory_hostname }}"
         port: 830 
         timeout: 5
-    - name: Print version
-      debug:
-        var: junos.version
+        
+    - name: run show version on remote devices
+      junos_command:
+        commands: show version
+
+    - name: run show version and check to see if output contains Juniper
+      junos_command:
+        commands: show version
+        wait_for: result[0] contains Juniper
+
+    - name: run multiple commands on remote nodes
+      junos_command:
+        commands:
+          - show version
+          - show interfaces
